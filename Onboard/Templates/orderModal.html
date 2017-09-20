@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body ng-app="onboardapp" ng-controller="orderController" ng-cloak>
+   
+        <div type="text/ng-template" id="orderModal.html">
+            <div ng-show="editOrderShow" class="modal-header">
+                <h3 class="modal-title">Edit Order</h3>
+            </div>
+
+            <form ng-show="editOrderShow" name="editOrderForm">
+                <div class="container">
+                    <div class="form-group form-inline col-lg-10">
+                        <label class="col-lg-3">Order ID</label>
+                        <input ng-model="modalSelectedData.OrderId" class="form-control col-lg-2" type="text" placeholder="Order Id" title="OrderId" disabled />
+                    </div>
+                    <div class="form-group form-inline col-lg-10">
+                        <label class="col-lg-3">Order Date</label>
+                        <input ng-model="modalSelecteddataDate" class="form-control col-lg-2" type="date" placeholder="Date" title="Date" />
+                    </div>
+                    <div class="form-group form-inline col-lg-10">
+                        <label class="col-lg-3">Customer Name</label>
+                        <select name="editOrdCustName" id="editOrdCustName" ng-model="modalSelectedData.CustomerName" class="form-control col-lg-2" placeholder="Options">
+                            <option ng-repeat="cutomer in customers" value="{{cutomer.Name}}">{{cutomer.Name}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-inline col-lg-10">
+                        <label class="col-lg-3">Product Name</label>
+                        <select name="editOrdProName" id="editOrdProName" ng-model="modalSelectedData.ProductName" class="form-control col-lg-2" placeholder="Options" ng-change="priceUpdate()">
+                            <option ng-repeat="option in products" value="{{option.ProductName}}">{{option.ProductName}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-inline col-lg-10">
+                        <label class="col-lg-3">Price</label>
+                        <input ng-model="editOrdProPrice" class="form-control col-lg-2" type="text" placeholder="Price" title="Price" />
+                    </div>
+                </div>
+            </form>
+
+            <div ng-show="addOrderShow" class="modal-header">
+                <h3 class="modal-title">Add Order</h3>
+            </div>
+            <form ng-show="addOrderShow" name="editOrderForm">
+
+                <div class="container">
+                    <div class="form-group form-inline col-lg-10">
+                        <label class="col-lg-3">Order ID</label>
+                        <input ng-model="OrderId" class="form-control col-lg-2" type="text" placeholder="Id" title="OrderId" disabled />
+                    </div>
+                    <div class="form-group form-inline col-lg-10">
+                        <label class="col-lg-3">Order Date</label>
+                        <input ng-model="Date" class="form-control col-lg-2" type="date" placeholder="Date" title="Date" />
+                    </div>
+                    <div class="form-group form-inline col-lg-10">
+                        <label class="col-lg-3">Customer Name</label>
+                        <select name="cusName" id="cusName" ng-model="addOrdCustName" class="form-control col-lg-2" placeholder="Options">
+                            <option ng-repeat="cutomer in customers" value="{{cutomer.Name}}">{{cutomer.Name}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-inline col-lg-10">
+                        <label class="col-lg-3">Product Name</label>
+                        <select name="productName" id="productName" ng-model="addOrdProName" class="form-control col-lg-2" placeholder="Options" ng-change="addModalpriceUpdate()">
+                            <option ng-repeat="option in products" value="{{option.ProductName}}">{{option.ProductName}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-inline col-lg-10">
+                        <label class="col-lg-3">Price</label>
+                        <input ng-model="addOrdProPrice" class="form-control col-lg-2" type="text" placeholder="Price" title="Price" />
+                    </div>
+                </div>
+            </form>
+            <div ng-show="deleteOrderShow">
+                <div class="modal-header">
+                    <h3 class="modal-title">Delete Order!</h3>
+                </div>
+
+                <div class="modal-body">
+                    <strong>Do you want to delete?</strong>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button ng-show="addOrderShow" class="btn btn-primary" ng-click="addOrder()">SAVE add</button>
+                <button ng-show="editOrderShow" class="btn btn-primary" ng-click="saveEditOrder()">SAVE edit</button>
+                <button ng-show="deleteOrderShow" class="btn btn-primary" ng-click="delOrder()">Delete</button>
+                <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+            </div>
+
+        </div>
+</body>
+</html>

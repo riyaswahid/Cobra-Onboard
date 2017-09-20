@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Orders";
+}
+
+<h2>Orders</h2>
+
+<div ng-app="onboardapp" ng-controller="orderController" ng-cloak>
+
+    <div class="jumbotron">
+        <button type="button" class="btn btn-primary" ng-click="open($index, 'addOrderShow')">Add Order</button>
+        
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th><span class="glyphicon glyphicon-triangle-bottom"></span> Order Id</th>
+                    <th><span class="glyphicon glyphicon-triangle-bottom"></span> Date</th>
+                    <th><span class="glyphicon glyphicon-triangle-bottom"></span> Customer Name</th>
+                    <th><span class="glyphicon glyphicon-triangle-bottom"></span> Product</th>
+                    <th><span class="glyphicon glyphicon-triangle-bottom"></span> Price</th>
+                    <th><span class="glyphicon glyphicon-triangle-bottom"></span> Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="order in orders">
+                    <td>{{order.OrderId}}</td>
+                    <td>{{order.OrderDate| dateFilter | date:"dd-MM-yyyy"}}</td>
+                    <td>{{order.CustomerName}}</td>
+                    <td>{{order.ProductName}}</td>
+                    <td>{{order.Price}}</td>
+                    <td><button type="button" class="btn btn-info btn-sm" ng-click="open($index, 'editOrderShow')">Edit</button> <button type="button" class="btn btn-danger btn-sm" ng-click="open($index,'deleteOrder')">Delete</button></td>
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    
+        
+        <div class="modal fade" id="order-dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Alert!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <strong>{{successMessage }}</strong>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+   
+</div>

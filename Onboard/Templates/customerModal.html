@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body ng-app="onboardapp" ng-controller="customerController" ng-cloak>
+    <div type="text/ng-template" id="customerModal.html">
+        <div ng-show="edit" class="modal-header">
+            <h3 class="modal-title">Edit Customer</h3>
+        </div>
+
+        <form ng-show="edit" name="editCustomerForm">
+
+
+            <div class="container">
+                <div class="form-group form-inline col-lg-10">
+                    <label class="col-lg-3">Customer Name</label>
+                    <input ng-model="selCusEditModalData.Name" class="form-control col-lg-2" type="text" placeholder="Name" title="Name" />
+                </div>
+                <div class="form-group form-inline col-lg-10">
+                    <label class="col-lg-3">Address 1</label>
+                    <input ng-model="selCusEditModalData.Address1" class="form-control col-lg-2" type="text" placeholder="Address1" title="Address1" />
+                </div>
+                <div class="form-group form-inline col-lg-10">
+                    <label class="col-lg-3">Address 2</label>
+                    <input ng-model="selCusEditModalData.Address2" class="form-control col-lg-2" type="text" placeholder="Address2" title="Address2" />
+                </div>
+                <div class="form-group form-inline col-lg-10">
+                    <label class="col-lg-3">City</label>
+                    <input ng-model="selCusEditModalData.City" class="form-control col-lg-2" type="text" placeholder="City" title="City" />
+                </div>
+            </div>
+        </form>
+        <form ng-show="add" name="editCustomerForm">
+            <div ng-show="add" class="modal-header">
+                <h3 class="modal-title">Add Customer</h3>
+            </div>
+
+            <div class="container">
+                <div class="form-group form-inline col-lg-10">
+                    <label class="col-lg-3">Customer Name</label>
+                    <input ng-model="customerName" class="form-control col-lg-2" type="text" placeholder="Name" title="Name" />
+                </div>
+                <div class="form-group form-inline col-lg-10">
+                    <label class="col-lg-3">Address 1</label>
+                    <input ng-model="customerAddress1" class="form-control col-lg-2" type="text" placeholder="Address1" title="Address1" />
+                </div>
+                <div class="form-group form-inline col-lg-10">
+                    <label class="col-lg-3">Address 2</label>
+                    <input ng-model="customerAddress2" class="form-control col-lg-2" type="text" placeholder="Address2" title="Address2" />
+                </div>
+                <div class="form-group form-inline col-lg-10">
+                    <label class="col-lg-3">City</label>
+                    <input ng-model="customerCity" class="form-control col-lg-2" type="text" placeholder="City" title="City" />
+                </div>
+            </div>
+        </form>
+        <div ng-show="deleteCustShow">
+            <div class="modal-header">
+                <h3 class="modal-title">Delete Customer!</h3>
+            </div>
+
+            <div class="modal-body">
+                <strong>Do you want to delete?</strong>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button ng-show="add" class="btn btn-primary" ng-click="saveAdd()">SAVE</button>
+            <button ng-show="edit" class="btn btn-primary" ng-click="saveEdit()">SAVE</button>
+            <button ng-show="deleteCustShow" class="btn btn-primary" ng-click="delCustomer()">Delete</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Customer";
+}
+
+@section scripts{
+
+}
+<h2>Customer</h2>
+
+<div ng-app="onboardapp" ng-controller="customerController" ng-cloak>
+   
+
+    <div class="jumbotron">
+        <button type="button" class="btn btn-primary" ng-click="open($index, 'add')">Add Customer</button>
+        {{zeroCustomerFound}}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th><span class="glyphicon glyphicon-triangle-bottom"></span> Name</th>
+                    <th><span class="glyphicon glyphicon-triangle-bottom"></span> Address1</th>
+                    <th><span class="glyphicon glyphicon-triangle-bottom"></span> Address2</th>
+                    <th><span class="glyphicon glyphicon-triangle-bottom"></span> City</th>
+                    <th><span class="glyphicon glyphicon-triangle-bottom"></span> Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="customer in customers">
+                    <td>{{ customer.Name }}</td>
+                    <td>{{ customer.Address1 }}</td>
+                    <td>{{ customer.Address2 }}</td>
+                    <td>{{ customer.City }}</td>
+                    <td><button type="button" class="btn btn-info btn-sm" ng-click="open($index, 'edit')">Edit</button> <button type="button" class="btn btn-danger btn-sm" ng-click="open($index, 'deleteCustomer')">Delete</button></td>
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+       
+        @*Message Dialog*@
+        <div class="modal fade" id="customer-dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Alert!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <strong>{{successMessage }}</strong>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
